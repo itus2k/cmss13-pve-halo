@@ -86,7 +86,7 @@
 
 /area/salvation/engi/generators
 	name = "\improper powergrid generator"
-	icon_state = "substation"
+	icon_state = "generator"
 
 /area/salvation/engi/power_main
 	name = "\improper power control room"
