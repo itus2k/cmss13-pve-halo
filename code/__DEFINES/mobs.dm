@@ -290,11 +290,11 @@
 #define PANDEMIC 2
 
 //emote flags
-#define EMOTING_HIGH_FIVE  1
-#define EMOTING_FIST_BUMP  2
-#define EMOTING_HEADBUTT   3
-#define EMOTING_TAIL_SWIPE 4
-#define EMOTING_ROCK_PAPER_SCISSORS 5
+#define EMOTING_HIGH_FIVE  (1<<0)
+#define EMOTING_FIST_BUMP  (1<<1)
+#define EMOTING_HEADBUTT   (1<<2)
+#define EMOTING_TAIL_SWIPE (1<<3)
+#define EMOTING_ROCK_PAPER_SCISSORS (1<<4)
 
 //forcesay types
 #define SUDDEN 0
@@ -350,7 +350,13 @@ GLOBAL_LIST_INIT(default_xeno_onmob_icons, list(
 #define SPECIES_MONKEY "Monkey"
 #define SPECIES_ZOMBIE "Zombie"
 #define SPECIES_SANGHEILI "Sangheili"
+#define SPECIES_SANGHEILI_HEROIC "Sangheili Heroic"
+#define SPECIES_SANGHEILI_LEGENDARY "Sangheili Legendary"
+#define SPECIES_SANGHEILI_MYTHIC "Sangheili Mythic"
 #define SPECIES_UNGGOY "Unggoy"
+#define SPECIES_UNGGOY_HEROIC "Unggoy Heroic"
+#define SPECIES_RUUHTIAN "Ruuhtian"
+#define SPECIES_RUUHTIAN_HEROIC "Ruuhtian Heroic"
 
 #define ALL_LIMBS list("head","chest","groin","l_leg","l_foot","r_leg","r_foot","l_arm","l_hand","r_arm","r_hand")
 #define MOVEMENT_LIMBS list("l_leg", "l_foot", "r_leg", "r_foot")

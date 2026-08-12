@@ -1,4 +1,4 @@
-/datum/ammo/energy/plasma
+/datum/ammo/energy/halo_plasma
 	name = "plasma bolt"
 	icon = 'icons/halo/obj/items/weapons/halo_projectiles.dmi'
 	shell_speed = AMMO_SPEED_TIER_3
@@ -8,7 +8,7 @@
 	ammo_glowing = TRUE
 	bullet_light_color = COLOR_PLASMA_TEAL
 
-/datum/ammo/energy/plasma/plasma_pistol
+/datum/ammo/energy/halo_plasma/plasma_pistol
 	name = "light plasma bolt"
 	icon_state = "plasma_teal"
 	accurate_range = 10
@@ -17,12 +17,12 @@
 	accuracy = HIT_ACCURACY_TIER_3
 	scatter = SCATTER_AMOUNT_TIER_10
 
-/datum/ammo/energy/plasma/plasma_pistol/overcharge
+/datum/ammo/energy/halo_plasma/plasma_pistol/overcharge
 	name = "overcharged light plasma bolt"
 	damage = 80
 	shell_speed = AMMO_SPEED_TIER_4
 
-/datum/ammo/energy/plasma/plasma_rifle
+/datum/ammo/energy/halo_plasma/plasma_rifle
 	name = "plasma bolt"
 	icon_state = "plasma_blue"
 	shell_speed = AMMO_SPEED_TIER_4
@@ -31,6 +31,49 @@
 	damage = 38
 	ammo_glowing = TRUE
 	bullet_light_color = COLOR_PLASMA_BLUE
+
+/datum/ammo/energy/halo_plasma/phantom_plasma_turret
+	name = "plasma bolt"
+	icon_state = "plasma_blue"
+	shell_speed = AMMO_SPEED_TIER_4
+	accurate_range = 14
+	max_range = 24
+	damage = 25
+	ammo_glowing = TRUE
+	bullet_light_color = COLOR_PLASMA_BLUE
+	scatter = SCATTER_AMOUNT_TIER_10
+
+/datum/ammo/energy/halo_plasma/phantom_main_turret
+	name = "heavy plasma bolt"
+	icon_state = "heavy_plasma_magenta"
+	shell_speed = AMMO_SPEED_TIER_4
+	accurate_range = 14
+	max_range = 24
+	damage = 25
+	ammo_glowing = TRUE
+	bullet_light_color = COLOR_PLASMA_BLUE
+	scatter = SCATTER_AMOUNT_TIER_10
+	var/radius = 1
+	var/flame_level = BURN_TIME_INSTANT
+	var/burn_level = BURN_LEVEL_TIER_6
+	var/flameshape = FLAMESHAPE_IRREGULAR
+	var/fire_type = FIRE_VARIANT_TYPE_X
+
+/datum/ammo/energy/halo_plasma/phantom_main_turret/on_hit_mob(mob/mob, obj/projectile/projectile)
+	new /obj/effect/temp_visual/plasma_explosion(get_turf(mob))
+	cell_explosion(get_turf(mob), 50, 20, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, projectile.weapon_cause_data, "explosion_phantomgun", "explosion_phantomgun", "explosion_phantomgun_lod")
+
+/datum/ammo/energy/halo_plasma/phantom_main_turret/on_hit_obj(obj/object, obj/projectile/projectile)
+	new /obj/effect/temp_visual/plasma_explosion(get_turf(object))
+	cell_explosion(get_turf(object), 50, 20, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, projectile.weapon_cause_data, "explosion_phantomgun", "explosion_phantomgun", "explosion_phantomgun_lod")
+
+/datum/ammo/energy/halo_plasma/phantom_main_turret/on_hit_turf(turf/turf, obj/projectile/projectile)
+	new /obj/effect/temp_visual/plasma_explosion(turf)
+	cell_explosion(turf, 50, 20, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, projectile.weapon_cause_data, "explosion_phantomgun", "explosion_phantomgun", "explosion_phantomgun_lod")
+
+/datum/ammo/energy/halo_plasma/phantom_main_turret/do_at_max_range(obj/projectile/projectile)
+	new /obj/effect/temp_visual/plasma_explosion(get_turf(projectile))
+	cell_explosion(get_turf(projectile), 50, 20, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, projectile.weapon_cause_data, "explosion_phantomgun", "explosion_phantomgun", "explosion_phantomgun_lod")
 
 /datum/ammo/needler
 	name = "needle"
@@ -42,7 +85,7 @@
 	accurate_range = 16
 	accuracy = HIT_ACCURACY_TIER_MAX
 	scatter = SCATTER_AMOUNT_TIER_10
-	shell_speed = AMMO_SPEED_TIER_3
+	shell_speed = AMMO_SPEED_TIER_2
 	effective_range_max = 7
 	damage_falloff = DAMAGE_FALLOFF_TIER_7
 	max_range = 24

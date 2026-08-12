@@ -14,6 +14,7 @@
 		else if(I)
 			_role = I.rank
 		switch(GET_DEFAULT_ROLE(_role))
+			if(JOB_SQUAD_LEADER) marine_rk = "leader"
 			if(JOB_SQUAD_ENGI) marine_rk = "engi"
 			if(JOB_SQUAD_SPECIALIST) marine_rk = "spec"
 			if(JOB_SQUAD_TEAM_LEADER) marine_rk = "tl"
@@ -34,8 +35,7 @@
 			if(JOB_SQUAD_TECH) marine_rk = "tech"
 		if(squad.squad_leader == current_human)
 			switch(squad.squad_type)
-				if("Platoon") marine_rk = "leader_a"
-				if("Team") marine_rk = "soctl_a"
+				if("Squad") marine_rk = "leader_a"
 			current_human.langchat_styles = "langchat_bolded" // bold text for bold leaders
 		else if(squad.fireteam_leaders["SQ1"] == current_human || squad.fireteam_leaders["SQ2"] == current_human)
 			current_human.langchat_styles = "langchat_smaller_bolded"
@@ -136,7 +136,7 @@
 				border_rk = "command"
 			if(JOB_NURSE)
 				marine_rk = "nurse"
-			if(JOB_SEA)
+			if(JOB_DI)
 				marine_rk = "sea"
 				border_rk = "command"
 			if(JOB_SYNTH)
@@ -166,11 +166,6 @@
 			if(JOB_PROVOST_MARSHAL, JOB_PROVOST_CMARSHAL, JOB_PROVOST_SMARSHAL)
 				marine_rk = "pvm"
 				border_rk = "command"
-			// TIS
-			if(JOB_TIS_IO)
-				marine_rk = "tisio"
-			if(JOB_TIS_SA)
-				marine_rk = "tissa"
 			// Riot MPs
 			if(JOB_RIOT)
 				marine_rk = "rmp"
@@ -228,6 +223,8 @@
 				marine_rk = "tl"
 			if(JOB_SQUAD_LEADER)
 				marine_rk = "leader"
+			if(JOB_SQUAD_RTO)
+				marine_rk = "rto"
 
 		if(marine_rk)
 			var/image/I = image('icons/mob/hud/marine_hud.dmi', current_human, "hudsquad")

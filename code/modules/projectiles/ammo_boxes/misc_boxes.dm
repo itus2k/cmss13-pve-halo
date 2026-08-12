@@ -58,11 +58,81 @@
 /obj/item/ammo_box/magazine/misc/mre
 	name = "\improper box of MREs"
 	desc = "A box of MREs. Nutritious, but not delicious."
-	magazine_type = /obj/item/storage/box/MRE
+	magazine_type = /obj/item/storage/box/mre
 	num_of_magazines = 12
 	overlay_content = "_mre"
 
 /obj/item/ammo_box/magazine/misc/mre/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/misc/mre/upp
+	name = "\improper box of UPP military rations"
+	desc = "A box of rations. Tastes like homeland."
+	icon_state = "upp_food_crate"
+	magazine_type = /obj/item/storage/box/mre/upp
+	overlay_content = "_upp_mre"
+
+/obj/item/ammo_box/magazine/misc/mre/upp/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/misc/mre/pmc
+	name = "\improper box of PMC CFR rations"
+	desc = "A box of expensive rations. You don't need a restaurant to eat nicely."
+	icon_state = "pmc_food_crate"
+	magazine_type = /obj/item/storage/box/mre/pmc
+	overlay_content = "_colony_mre"
+
+/obj/item/ammo_box/magazine/misc/mre/pmc/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/misc/mre/wy
+	name = "\improper box of W-Y brand rations"
+	desc = "A box of basic packed foods, comes with all sorts of W-Y branded snacks. \nOn the box is the Weyland-Yutani logo, with a slogan surrounding it: \n<b>WEYLAND-YUTANI. FEEDING BETTER WORLDS</b>."
+	icon_state = "wy_food_crate"
+	magazine_type = /obj/item/storage/box/mre/wy
+	overlay_content = "_wy_mre"
+
+/obj/item/ammo_box/magazine/misc/mre/wy/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/misc/mre/twe
+	name = "\improper box of TWE ORP rations"
+	desc = "A box of expensive rations. You don't need a restaurant to eat nicely."
+	icon_state = "twe_food_crate"
+	magazine_type = /obj/item/storage/box/mre/twe
+	overlay_content = "_twe_mre"
+
+/obj/item/ammo_box/magazine/misc/mre/twe/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/misc/mre/emergency
+	name = "\improper box of emergency rations"
+	desc = "A box of emergency rations. Designed to withstand."
+	icon_state = "colony_food_crate"
+	magazine_type = /obj/item/mre_food_packet/wy/cookie_brick
+	num_of_magazines = 20
+	overlay_content = "_colony_mre"
+
+/obj/item/ammo_box/magazine/misc/mre/emergency/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/misc/mre/fsr
+	name = "\improper box of FSR rations"
+	desc = "A box of First Strike Rations. Nutritious, but not delicious, cigarettes not included."
+	icon_state = "merc_food_crate"
+	magazine_type = /obj/item/storage/box/mre/fsr
+
+/obj/item/ammo_box/magazine/misc/mre/fsr/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/misc/mre/hdr
+	name = "\improper box of HDR rations"
+	desc = "A box of Humanitarian Daily Rations. Give these out to hungry colonist kids, will you?"
+	icon_state = "hdr_food_crate"
+	magazine_type = /obj/item/storage/box/mre/hdr
+	overlay_content = "_hdr_mre"
+
+/obj/item/ammo_box/magazine/misc/mre/hdr/empty
 	empty = TRUE
 
 //------------------------M94 Marking Flare Packs Box--------------------------
@@ -70,17 +140,26 @@
 /obj/item/ammo_box/magazine/misc/flares
 	name = "\improper box of M94 marking flare packs"
 	desc = "A box of M94 marking flare packs, to brighten up your day."
-	magazine_type = /obj/item/storage/box/m94
+	magazine_type = /obj/item/storage/box/flare
 	num_of_magazines = 10
 	overlay_gun_type = "_m94"
 	overlay_content = "_flares"
+
+/obj/item/ammo_box/magazine/misc/flares/upp
+	name = "\improper box of R52 marking flare packs"
+	desc = "A box of R52 marking flare packs, to brighten up your day."
+	icon_state = "upp_supply_crate_black"
+	magazine_type = /obj/item/storage/box/flare/upp
+	num_of_magazines = 10
+	overlay_gun_type = "_blank"
+	overlay_content = "_flares_upp"
 
 //------------------------M89 Signal Flare Packs Box--------------------------
 
 /obj/item/ammo_box/magazine/misc/flares/signal
 	name = "\improper box of M89 signal flare packs"
 	desc = "A box of M89 signal flare packs, to mark up the way."
-	magazine_type = /obj/item/storage/box/m94/signal
+	magazine_type = /obj/item/storage/box/flare/signal
 	overlay_gun_type = "_m89"
 	overlay_content = "_flares_signal"
 
@@ -95,7 +174,7 @@
 
 /obj/item/ammo_box/magazine/misc/flares/get_severity()
 	var/flare_amount = 0
-	for(var/obj/item/storage/box/m94/flare_box in contents)
+	for(var/obj/item/storage/box/flare/flare_box in contents)
 		flare_amount += length(flare_box.contents)
 	flare_amount = floor(flare_amount / 14) //10 packs, 14 flares each, maximum total of 10 flares we can throw out
 	return flare_amount
@@ -208,7 +287,7 @@
 	name = "\improper UNSC storage crate - (MRE x 14)"
 	desc = "A generic storage crate for the UNSC holding MREs."
 	icon_state = "base_mre"
-	magazine_type = /obj/item/storage/box/MRE
+	magazine_type = /obj/item/storage/box/mre
 	num_of_magazines = 14
 	overlay_content = "_mre"
 
@@ -219,7 +298,7 @@
 	name = "\improper UNSC storage crate  (Flares x 14)"
 	desc = "A generic storage crate for the UNSC holding flares."
 	icon_state = "base_flare"
-	magazine_type = /obj/item/storage/box/m94
+	magazine_type = /obj/item/storage/box/flare
 	num_of_magazines = 14
 	overlay_content = "_flare"
 
@@ -230,7 +309,7 @@
 	name = "\improper UNSC storage crate - (Signal Flares x 14)"
 	desc = "A generic storage crate for the UNSC holding signal flares."
 	icon_state = "base_flare"
-	magazine_type = /obj/item/storage/box/m94/signal
+	magazine_type = /obj/item/storage/box/flare/signal
 	num_of_magazines = 14
 	overlay_content = "_signal"
 
@@ -238,7 +317,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/misc/unsc/grenade
-	name = "\improper UNSC storage crate - (Grenades x 9)"
+	name = "\improper UNSC storage crate - (Frag Grenades x 9)"
 	desc = "A generic storage crate for the UNSC holding fragmentation grenades."
 	icon_state = "base_frag"
 	magazine_type = /obj/item/explosive/grenade/high_explosive/m15/unsc
@@ -246,6 +325,36 @@
 	overlay_content = "_frag"
 
 /obj/item/ammo_box/magazine/misc/unsc/grenade/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/misc/unsc/grenade/smoke
+	name = "\improper UNSC storage crate - (Smoke Grenades x 9)"
+	desc = "A generic storage crate for the UNSC holding smoke grenades."
+	icon_state = "base_smoke"
+	magazine_type = /obj/item/explosive/grenade/smokebomb/unsc
+	num_of_magazines = 9
+	overlay_content = "_smoke"
+
+/obj/item/ammo_box/magazine/misc/unsc/grenade/smoke/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/misc/unsc/grenade/blast
+	name = "\improper UNSC storage crate - (Blast Grenades x 9)"
+	desc = "A generic storage crate for the UNSC holding defensive grenades."
+	icon_state = "base_defgre"
+	magazine_type = /obj/item/explosive/grenade/high_explosive/pmc/unsc
+	num_of_magazines = 9
+	overlay_content = "_defgre"
+
+/obj/item/ammo_box/magazine/misc/unsc/grenade/thermite
+	name = "\improper UNSC storage crate - (Thermite Grenades x 9)"
+	desc = "A generic storage crate for the UNSC holding thermite grenades."
+	icon_state = "base_thermite"
+	magazine_type = /obj/item/explosive/grenade/incendiary/unsc
+	num_of_magazines = 9
+	overlay_content = "_thermite"
+
+/obj/item/ammo_box/magazine/misc/unsc/grenade/blast/empty
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/misc/unsc/grenade/launchable
@@ -278,4 +387,48 @@
 	overlay_content = "_riflepack"
 
 /obj/item/ammo_box/magazine/misc/unsc/m7_ammo/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/misc/unsc/ma5_ammo_packet
+	name = "UNSC storage crate - (M118 (7.62x51mm) Ammunition Packets x 16)"
+	desc = "A generic UNSC storage crate for holding ammunition packets to refill MA5 series rifle magazines."
+	magazine_type = /obj/item/ammo_box/rounds/unsc/ma5
+	num_of_magazines = 16
+	icon_state = "base_40mm"
+	overlay_content = "_riflepack"
+
+/obj/item/ammo_box/magazine/misc/unsc/ma5_ammo_packet/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/misc/unsc/m7_ammo_packet
+	name = "UNSC storage crate - (M443 (5x23mm) Ammunition Packets x 16)"
+	desc = "A generic UNSC storage crate for holding ammunition packets to refill M7 SMG magazines."
+	magazine_type = /obj/item/ammo_box/rounds/unsc/m7
+	num_of_magazines = 16
+	icon_state = "base_40mm"
+	overlay_content = "_riflepack"
+
+/obj/item/ammo_box/magazine/misc/unsc/m7_ammo_packet/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/misc/unsc/m6_ammo_packet
+	name = "UNSC storage crate - (M225 (12.7x40mm) Ammunition Packets x 16)"
+	desc = "A generic UNSC storage crate for holding ammunition packets to refill M6 series handgun magazines."
+	magazine_type = /obj/item/ammo_box/rounds/unsc/m6
+	num_of_magazines = 16
+	icon_state = "base_40mm"
+	overlay_content = "_pistolpack"
+
+/obj/item/ammo_box/magazine/misc/unsc/m6_ammo_packet/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/misc/unsc/br55_ammo_packet
+	name = "UNSC storage crate - (M634 (9.5x40mm) Ammunition Packets x 16)"
+	desc = "A generic UNSC storage crate for holding ammunition packets to refill BR55 battle rifle magazines."
+	magazine_type = /obj/item/ammo_box/rounds/unsc/br55
+	num_of_magazines = 16
+	icon_state = "base_40mm"
+	overlay_content = "_pistolpack"
+
+/obj/item/ammo_box/magazine/misc/unsc/br55_ammo_packet/empty
 	empty = TRUE
