@@ -11,6 +11,8 @@
 
 /obj/item/storage/box/tear_packet/m7
 	name = "magazine packet (M7, x2)"
+	desc = "A plastic packet bulging at the seams with two M7 SMG magazines."
+	w_class = SIZE_MEDIUM
 	storage_slots = 2
 
 /obj/item/storage/box/tear_packet/m7/fill_preset_inventory()
@@ -33,6 +35,7 @@
 	name = "UNSC medical packet"
 	desc = "A combat-rated first aid medical packet filled with the bare bones basic essentials to ensuring you or your buddies don't die on the battlefield."
 	icon_state = "medical_packet"
+	w_class = 3
 	storage_slots = 6
 	max_w_class = 3
 	can_hold = list(
